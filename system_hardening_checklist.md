@@ -67,12 +67,7 @@ sysctl -p /etc/sysctl.d/99-hardening.conf
 4.6	Docker daemon hardening	/etc/docker/daemon.json	Set log-driver=json-files, limit resources	If Docker used
 4.7	Snap/Flatpak restrictions	Sandboxed apps only	Prefer over deb/rpm for apps	Modern packages
 4.8	Time sync enforcement	timedatectl set-ntp true	NTP synchronized	Prevent auth bypass
-Service pruning script skeleton:
 
-#!/bin/bash
-# List services, filter out essentials, disable candidates
-systemctl list-unit-files --type=service --state=enabled | \
-grep -vE 'sshd|cron|network|docker|fail2ban|rsyslog|systemd-journald' | \
-awk '{print $1}' | sed 's/.service$//' | \
-while read svc; do echo "Review: $svc"; done
+
+
 
