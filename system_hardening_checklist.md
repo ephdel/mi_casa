@@ -1,43 +1,6 @@
 
 Not final in any way. Learning cyber security by building my own tools and scripts.
 
-Directory Structure
-homelab-hardening/
-├── ansible.cfg
-├── inventory/
-│   ├── hosts.yml
-│   └── group_vars/
-│       ├── linux_servers.yml
-│       ├── mac_workstations.yml
-│       └── docker_hosts.yml
-├── roles/
-│   ├── common/
-│   │   ├── tasks/main.yml
-│   │   └── handlers/main.yml
-│   ├── ssh_hardening/
-│   │   ├── tasks/main.yml
-│   │   └── templates/sshd_config.j2
-│   ├── firewall/
-│   │   ├── tasks/main.yml
-│   │   └── templates/ufw.rules.j2
-│   ├── sysctl/
-│   │   ├── tasks/main.yml
-│   │   └── templates/sysctl-hardening.conf.j2
-│   ├── auditing/
-│   │   ├── tasks/main.yml
-│   │   └── templates/audit.rules.j2
-│   └── fail2ban/
-│       ├── tasks/main.yml
-│       └── templates/jail.local.j2
-├── container-hardening/
-│   ├── docker_daemon.yml
-│   └── podman_config.yml
-└── network-devices/
-    ├── pfsense.yml
-    ├── ubiquiti.yml
-    └── mikrotik.yml
-└── site.yml
-
 Checklists
 
 1. Authentication & Access Control
