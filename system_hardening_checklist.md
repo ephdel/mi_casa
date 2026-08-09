@@ -3,8 +3,9 @@ Not final in any way. Learning cyber security by building my own tools and scrip
 
 Checklists
 
-1. Authentication & Access Control
-#	Setting	Command/Config Path	Recommended Value	OS Notes
+# 1. Authentication & Access Control
+Setting	Command/Config Path	Recommended Value	OS Notes
+
 1.1	Disable root SSH login	/etc/ssh/sshd_config	PermitRootLogin no	All Linux
 1.2	Disable password auth	/etc/ssh/sshd_config	PasswordAuthentication no	Key-only access
 1.3	Limit SSH users	/etc/ssh/sshd_config	AllowUsers ghost admin1 admin2	Whitelist approach
@@ -19,8 +20,8 @@ Checklists
 1.12	macOS Firewall	defaults write /Library/Preferences/com.apple.alf globalstate -int 1	Firewall ON	Script via sudo
 
 
-2. Network Security
-#	Setting	Command/Config Path	Recommended Value	OS Notes
+# 2. Network Security
+Setting	Command/Config Path	Recommended Value	OS Notes
 2.1	Enable firewall (iptables/ufw)	ufw enable (Ubuntu) / firewalld (Fedora)	Default deny incoming	Choose per distro
 2.2	UFW default rules	ufw default deny incoming && ufw allow out	Deny in, allow out	Ubuntu
 2.3	Firewalld zone config	firewall-cmd --set-default-zone=public	Restrictive default	Fedora/RHEL
@@ -45,8 +46,8 @@ fs.suid_dumpable = 0
 EOF
 sysctl -p /etc/sysctl.d/99-hardening.conf
 
-3. File System & Permissions
-#	Setting	Command/Config Path	Recommended Value	OS Notes
+# 3. File System & Permissions
+Setting	Command/Config Path	Recommended Value	OS Notes
 3.1	World-writable dirs audit	find / -xdev -perm -002 -type d	Fix/remove violations	All
 3.2	Noexec on /tmp	/etc/fstab	Mount /tmp with noexec,nosuid,nodev	Critical
 3.3	Remove SUID binaries	find / -xdev -perm -4000 -type f	Review/list before removing	Audit first
@@ -57,8 +58,9 @@ sysctl -p /etc/sysctl.d/99-hardening.conf
 3.8	Auditd rules	/etc/audit/rules.d/hardening.rules	Monitor auth, sudo, cron	Log all activity
 3.9	Immutable critical files	chattr +i /etc/passwd /etc/shadow	Protect user db	Use cautiously
 3.10	Encrypted home directories	Ubuntu: ecryptfs-utils, Fedora: LUKS setup	Encrypt sensitive data	Setup during install
-4. Package & Service Management
-#	Setting	Command/Config Path	Recommended Value	OS Notes
+
+# 4. Package & Service Management
+Setting	Command/Config Path	Recommended Value	OS Notes
 4.1	Remove unnecessary packages	apt list --installed, rpm -qa	Prune dev/tools	Manual review
 4.2	Disable unused services	systemctl disable <service>	Identify non-essential	List all first
 4.3	Auto-security updates	Ubuntu: unattended-upgrades, Fedora: dnf-automatic	Daily patching	Configurable schedule
