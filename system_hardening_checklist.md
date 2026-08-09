@@ -22,6 +22,7 @@ Setting	Command/Config Path	Recommended Value	OS Notes
 
 # 2. Network Security
 Setting	Command/Config Path	Recommended Value	OS Notes
+
 2.1	Enable firewall (iptables/ufw)	ufw enable (Ubuntu) / firewalld (Fedora)	Default deny incoming	Choose per distro
 2.2	UFW default rules	ufw default deny incoming && ufw allow out	Deny in, allow out	Ubuntu
 2.3	Firewalld zone config	firewall-cmd --set-default-zone=public	Restrictive default	Fedora/RHEL
@@ -48,6 +49,7 @@ sysctl -p /etc/sysctl.d/99-hardening.conf
 
 # 3. File System & Permissions
 Setting	Command/Config Path	Recommended Value	OS Notes
+
 3.1	World-writable dirs audit	find / -xdev -perm -002 -type d	Fix/remove violations	All
 3.2	Noexec on /tmp	/etc/fstab	Mount /tmp with noexec,nosuid,nodev	Critical
 3.3	Remove SUID binaries	find / -xdev -perm -4000 -type f	Review/list before removing	Audit first
@@ -61,6 +63,7 @@ Setting	Command/Config Path	Recommended Value	OS Notes
 
 # 4. Package & Service Management
 Setting	Command/Config Path	Recommended Value	OS Notes
+
 4.1	Remove unnecessary packages	apt list --installed, rpm -qa	Prune dev/tools	Manual review
 4.2	Disable unused services	systemctl disable <service>	Identify non-essential	List all first
 4.3	Auto-security updates	Ubuntu: unattended-upgrades, Fedora: dnf-automatic	Daily patching	Configurable schedule
